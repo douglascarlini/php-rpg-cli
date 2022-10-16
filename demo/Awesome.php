@@ -46,6 +46,7 @@ class Awesome extends Game
             if ($actor->state == 'dead') {
                 $this->label("end", "\n### {$actor->name} LOSE! ###\n");
                 $this->report($actor->name, $actor);
+                $this->log("{$actor->name} lose");
                 $this->ui();
                 break;
             } else {
@@ -55,6 +56,7 @@ class Awesome extends Game
                 if ($total < 1) {
                     $this->label("end", "\n### {$actor->name} WINS! ###\n");
                     $this->report($actor->name, $actor);
+                    $this->log("{$actor->name} wins");
                     $this->ui();
                     break;
                 }
@@ -156,6 +158,7 @@ class Awesome extends Game
             $this->threats = array_values($this->threats);
             $actor->threats = array_values($actor->threats);
             $actor->weapons[$actor->weapon]->data['level']->add(1);
+            $this->log("{$threat->name} was defeated by {$actor->name}");
         }
     }
 
