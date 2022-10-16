@@ -150,6 +150,9 @@ class Awesome extends Game
         $actor = $this->actors[0];
 
         if ($threat->state == 'dead') {
+
+            $this->log("{$threat->name} was defeated by {$actor->name}");
+
             unset($this->threats[0]);
             unset($actor->threats[0]);
             $actor->data['level']->add(1);
@@ -158,7 +161,6 @@ class Awesome extends Game
             $this->threats = array_values($this->threats);
             $actor->threats = array_values($actor->threats);
             $actor->weapons[$actor->weapon]->data['level']->add(1);
-            $this->log("{$threat->name} was defeated by {$actor->name}");
         }
     }
 
