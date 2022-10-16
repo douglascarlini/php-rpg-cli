@@ -79,7 +79,7 @@ class Game
 
     function ui()
     {
-        // $this->clear();
+        $this->clear();
 
         foreach ($this->labels as $id => $label) {
             if (is_null($label->limit)) {
